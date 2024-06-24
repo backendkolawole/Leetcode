@@ -25,14 +25,14 @@ var solve = function(board) {
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < columns; j++) {
             if (board[i][j] == "O") board[i][j] = "X"
+            else if (board[i][j] == "T") board[i][j] = "O"
         }
     }
 
     // iterate through the board row by row
     // uncapture surrounded regions
-    for (let i = 0; i < rows; i++) {
-        for (let j = 0; j < columns; j++) {
-            if (board[i][j] == "T") board[i][j] = "O"
-        }
-    }    
+    // for (let i = 0; i < rows; i++) {
+    //     for (let j = 0; j < columns; j++) {
+    //     }
+    // }    
 };
