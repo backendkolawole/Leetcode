@@ -12,21 +12,22 @@ class Solution:
         rows = len(matrix)
         columns = len(matrix[0])
 
-        def isDiagonalUniValue(i, j, prevValue):
+        def isDiagonalUniValue(i, j):
+            val = matrix[i][j]
+
             while (i < rows and j < columns):
-                if (matrix[i][j] != prevValue):
+                if (val != matrix[i][j]):
                     return False
                 i += 1
                 j += 1
-            
             return True
 
         for i in range(columns):
-            if (not isDiagonalUniValue(0, i, matrix[0][i])):
+            if not isDiagonalUniValue(0, i):
                 return False
         
         for i in range(1, rows):
-            if (not isDiagonalUniValue(i, 0, matrix[i][0])):
+            if not isDiagonalUniValue(i, 0):
                 return False
 
         return True
