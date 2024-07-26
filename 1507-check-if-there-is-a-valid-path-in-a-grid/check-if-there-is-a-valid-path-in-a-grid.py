@@ -2,57 +2,51 @@ class Solution:
     def hasValidPath(self, grid: List[List[int]]) -> bool:
         rows = len(grid)
         columns = len(grid[0])
+        visited = set((0, 0))
         
-        # dict for transition rule
-        rules = {
-            1: {0: 0, 3: 3},
-            2: {1: 1, 2: 2},
-            3: {0: 2, 1: 3},
-            4: {1: 0, 3: 2},
-            5: {0: 1, 2: 3},
-            6: {2: 0, 3: 1},
-        }
+        # dictionaries for transition rule
+        up = {x: set([2, 3, 4]) for x in [2, 5, 6]}
+        right = {x: set([1, 3, 5]) for x in [1, 4, 6]}
+        down = {x: set([2, 5, 6]) for x in [2, 3, 4]}
+        left = {x: set([1, 4, 6]) for x in [1, 3, 5] }
         
-        # dict for update rule
-        moves = {
-            0: (0, 1),
-            1: (-1, 0),
-            2: (1, 0),
-            3: (0, -1),
-        }
-        
-        i, j = (0, 0)
-        k = grid[0][0]
-        d = list(rules[k].keys())
-        direction_1 = d[0]
-        direction_2 = d[1]
-        # print(d)
-        
-        # define a variable set that keeps track of visited coordinates to detect loops and checks if the bottom-right corner of the grid is reached. 
-        # If a valid path is found in either of the two possible starting directions, 
-        # the function returns True; otherwise, it returns False.
+        def isValid(dr, dc, i, j, direction):
 
-        def walkMaze(i, j, d):
-            # visited = set([(i, j)])
-            visited = set((i, j))
-            print(visited)
+            if dr < 0 or dr == rows or dc < 0 or dc == columns or (dr, dc) in visited:
+                return False
 
-            while True:
-                if i < 0 or i >= rows or j < 0 or j >= columns:
-                    return False
-                
-                k = grid[i][j]
-                if d not in rules[k]:
-                    return False
-                
-                if (i, j) == (rows - 1, columns - 1):
-                    return True
-                
-                d = rules[k][d]
-                i, j = (i + moves[d][0], j + moves[d][1])
-                if (i, j) in visited: # there is a loop
-                    return False
-                visited.add((i, j))
+            street = grid[i][j]
+
+            if street not in direction:
+                return False
+
+            path = grid[dr][dc]
+            if not path in direction[street]:
+                return False
+
+            return True
         
-        return walkMaze(i, j, direction_1) or walkMaze(i, j, direction_2)
-        
+
+        directions = [(-1, 0, up), 
+                        (0, 1, right), 
+                        (1, 0, down),
+                        (0, -1, left) ]
+
+        queue = [(0, 0)]
+
+        while queue:
+
+            i, j = queue.pop(0)
+            
+            if (i, j) == (rows - 1, columns - 1):
+                return True
+            for dr, dc, map in directions:
+                new_x = dr + i
+                new_y = dc + j
+
+                # if we travel out of bounds return False
+                if isValid(new_x, new_y, i, j, map):
+                    visited.add((new_x, new_y))
+                    queue.append((new_x, new_y))
+
+        return False
