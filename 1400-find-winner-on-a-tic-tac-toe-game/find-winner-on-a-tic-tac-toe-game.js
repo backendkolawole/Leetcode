@@ -58,7 +58,6 @@ var tictactoe = function(moves) {
             if (!lookup[column]) lookup[column] = 0
             lookup[column] += 1
             if (lookup[column] == 3) return 'A'
-            console.log('it was As turn: ', k, [i, j])
         }
         else {
             grid[i][j] = 'O'
@@ -72,8 +71,6 @@ var tictactoe = function(moves) {
                 let value = 'O on secondary diagonal'
                 if (!lookup[value]) lookup[value] = 0
                 lookup[value] += 1
-                console.log('incrementing O on secondary diagonal: ', k, [i, j])
-
                 if (lookup[value] == 3) return 'B'
             }
             row = `O on row ${i}`
@@ -86,17 +83,10 @@ var tictactoe = function(moves) {
             if (!lookup[column]) lookup[column] = 0
             lookup[column] += 1
             if (lookup[column] == 3) return 'B'
-            console.log('it was Bs turn: ', k, [i, j])
-
         }
         k++
         
     }
-
-    // console.log(k)
-
-    // console.log(lookup)
-    // console.log(grid)
 
     return moves.length == 9? 'Draw': 'Pending'
 
