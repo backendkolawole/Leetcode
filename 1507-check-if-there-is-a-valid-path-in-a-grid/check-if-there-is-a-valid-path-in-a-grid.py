@@ -21,7 +21,7 @@ class Solution:
                 return False
 
             path = grid[dr][dc]
-            if not path in direction[street]:
+            if path not in direction[street]:
                 return False
 
             return True
