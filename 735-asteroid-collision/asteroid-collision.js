@@ -21,20 +21,20 @@ var asteroidCollision = function(asteroids) {
                 stack.push(asteroid)
                 break
             }
-            else if (peek == -asteroid) {
+            if (peek == -asteroid) {
                 stack.pop()
                 break
             }
-            else if (peek > -asteroid) {
+            if (peek > -asteroid) {
                 break
             } 
-            else {
-                stack.pop()
-                if (!stack.length) {
-                    stack.push(asteroid)
-                    break
-                }
+            
+            stack.pop()
+            if (!stack.length) {
+                stack.push(asteroid)
+                break
             }
+            
 
         }
         
