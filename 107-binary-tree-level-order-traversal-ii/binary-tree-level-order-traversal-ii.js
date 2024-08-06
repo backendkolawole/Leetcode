@@ -21,7 +21,7 @@ var levelOrderBottom = function(root) {
             if (node.left) queue.push(node.left)
             if (node.right) queue.push(node.right)
         }
-        output.push(level)
+        output.unshift(level)
     }
-    return output.reverse()
+    return output
 };
