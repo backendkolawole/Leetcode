@@ -17,7 +17,7 @@
 // else swap the first and last 
 
 var recoverTree = function(root) {
-    let prev = new TreeNode(-Infinity)
+    let prev = null
     let first = null
     let middle = null
     let last = null
