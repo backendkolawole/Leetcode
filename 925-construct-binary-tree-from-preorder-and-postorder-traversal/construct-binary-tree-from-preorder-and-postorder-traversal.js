@@ -14,12 +14,12 @@ var constructFromPrePost = function(preorder, postorder) {
         let root = new TreeNode(preorder[preStart])
         if (preStart == preEnd) return root
 
-        let postIndex = postStart
+        // let postIndex = postStart
         // while (postorder[postIndex] != preorder[preStart + 1]) {
         //     postIndex ++
         // }
 
-        postIndex = postorder.indexOf(preorder[preStart + 1])
+        let postIndex = postorder.indexOf(preorder[preStart + 1])
         let length = postIndex - postStart + 1
         root.left = dfs(preorder, preStart + 1, preStart + length, postorder, postStart, postIndex);
         root.right = dfs(preorder, preStart + length + 1, preEnd, postorder, postIndex + 1, postEnd - 1);
