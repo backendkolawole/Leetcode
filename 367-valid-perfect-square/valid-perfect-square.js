@@ -1,6 +1,6 @@
 
 var isPerfectSquare = function(num) {
-    let i = 0
+    let i = 1
     let j = num
 
     while (i <=j) {
