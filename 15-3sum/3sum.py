@@ -8,7 +8,7 @@ class Solution:
         lookup = set()
         nums.sort()
 
-        for i in range(len(nums)):
+        for i in range(len(nums) - 2):
             first = nums[i]
             a = i + 1
             b = len(nums) - 1
