@@ -17,9 +17,9 @@ class Solution:
                 if current in lookup:
                     index = lookup[current]
                     ans[index] = stack[-1]
-                stack.append(current)
-            else:
-                stack.append(current)
+            stack.append(current)
+            # else:
+            #     stack.append(current)
             
         return ans
                     
