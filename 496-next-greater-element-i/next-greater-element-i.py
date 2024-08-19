@@ -9,7 +9,7 @@ class Solution:
             current = nums2[i]
             if not stack:
                 stack.append(current)
-                continue
+                # continue
                 
             while stack and current >= stack[-1]:
                 stack.pop()
