@@ -14,8 +14,7 @@ class Solution:
                 stack.pop()
             if stack:
                 ans[i % length] = stack[-1]
-                stack.append(current)
-            else:
-                stack.append(current)
+                # stack.append(current)
+            stack.append(current)
 
         return ans
