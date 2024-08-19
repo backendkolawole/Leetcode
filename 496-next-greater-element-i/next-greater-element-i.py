@@ -11,15 +11,14 @@ class Solution:
                 stack.append(current)
                 continue
                 
-            while stack and current > stack[-1]:
+            while stack and current >= stack[-1]:
                 stack.pop()
             if stack:
                 if current in lookup:
                     index = lookup[current]
                     ans[index] = stack[-1]
             stack.append(current)
-            # else:
-            #     stack.append(current)
+
             
         return ans
                     
