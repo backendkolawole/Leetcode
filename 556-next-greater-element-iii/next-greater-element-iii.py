@@ -1,7 +1,7 @@
 class Solution:
     def nextGreaterElement(self, n: int) -> int:
         array = [char for char in str(n)]
-        index = -1
+        # print(''.join(array))
         length = len(array)
         index = len(array) - 2
 
@@ -26,6 +26,6 @@ class Solution:
             i += 1
             j -= 1
 
-        result = int(''.join(list(array)))
+        result = int(''.join(array))
         return -1 if pow(2, 31) - 1 < result else result
         
