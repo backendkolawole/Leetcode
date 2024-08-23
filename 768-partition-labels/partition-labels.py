@@ -21,7 +21,6 @@ class Solution:
         for i, val in enumerate(s):
             end = max(end, lookup[val])
             size +=1
-            print(end, size)
 
             if (end == i):
                 result.append(size)
