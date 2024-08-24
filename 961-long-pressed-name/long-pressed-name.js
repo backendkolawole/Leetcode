@@ -1,6 +1,5 @@
 
 var isLongPressedName = function(name, typed) {
-    // if (name.length == typed.length) return true
     if (name.length > typed.length) return false
 
     let i = 0
