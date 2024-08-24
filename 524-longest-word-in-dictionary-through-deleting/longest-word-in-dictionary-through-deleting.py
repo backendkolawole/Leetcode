@@ -13,10 +13,18 @@ class Solution:
         result = ""
 
         def canForm(char, target):
+            lookup = {}
+
+            for c in char:
+                if c not in lookup:
+                    lookup[c] = True
+
             i = 0
             j = 0
 
             while i < len(char) and j < len(target):
+                if target[j] not in lookup:
+                    return False
                 if (char[i] == target[j]):
                     i += 1
                     j += 1
