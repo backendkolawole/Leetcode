@@ -10,7 +10,6 @@
 
 class Solution:
     def findLongestWord(self, s: str, dictionary: List[str]) -> str:
-        lookup = {x: i for i, x in enumerate(s)}
         result = ""
 
         def canForm(char, target):
