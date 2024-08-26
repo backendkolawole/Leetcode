@@ -5,6 +5,7 @@ class Solution:
         total = 0
 
         for i, val in enumerate(nums):
+            # print(lookup)
             total += val
             remainder = (total % k + k) % k
 
