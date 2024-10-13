@@ -1,6 +1,5 @@
 class Solution:
     def isHappy(self, n: int) -> bool:
-        n = str(n)
         my_set = set()
 
         while n:
