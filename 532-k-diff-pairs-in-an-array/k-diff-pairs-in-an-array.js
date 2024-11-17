@@ -8,9 +8,7 @@ var findPairs = function(nums, k) {
     }
 
     let count = 0
-    
-    for ([key, val] of Object.entries(lookup)) {
-        }
+
 
     if (k == 0) {
         for ([key, val] of Object.entries(lookup)) {
