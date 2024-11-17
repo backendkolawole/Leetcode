@@ -10,7 +10,6 @@ var findPairs = function(nums, k) {
     let count = 0
     
     for ([key, val] of Object.entries(lookup)) {
-            console.log(typeof key, typeof val)
         }
 
     if (k == 0) {
