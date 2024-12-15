@@ -1,11 +1,15 @@
 class Solution:
     def reverseWords(self, s: str) -> str:
-        s = s.strip()
-        my_list = [char for char in s.split(' ') if char]
-        # arr = reversed(my_list)
-        my_list.reverse()
-        # print(arr, my_list.reverse())
-        s = ' '.join(my_list)
+        words = [word for word in s.split(' ') if word]
         
-        return s
+        i = 0
+        j = len(words) - 1
+
+        while (i < j):
+            words[i], words[j] = words[j], words[i]
+            i += 1
+            j -= 1
+
+        
+        return ' '.join(words)
         
