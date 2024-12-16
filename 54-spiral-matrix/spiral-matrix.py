@@ -1,44 +1,36 @@
-# get the dimensions
-# declare a variable result which will be the result array
-# while the indices are still in bound
-
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
-        # rows = len(matrix)
-        # columns = len(matrix[0])
         output = []
-        top_row = 0
-        bottom_row = len(matrix)
-        left_col = 0
-        right_col = len(matrix[0]) 
+        start_row = 0
+        end_row = len(matrix)
+        start_column = 0
+        end_column = len(matrix[0])
 
+        while (start_row < end_row and start_column < end_column):
 
-        while (left_col < right_col and top_row < bottom_row):
-
-            # traverse left to right
-            for i in range(left_col, right_col):
-                output.append(matrix[top_row][i])
+            # traverse from left to right
+            for i in range(start_column, end_column):
+                output.append(matrix[start_row][i])
             
-            top_row += 1
+            start_row += 1
 
+            # traverse from top to bottom
+            for i in range(start_row, end_row):
+                output.append(matrix[i][end_column - 1])
+            
+            end_column -=1
 
-            # traverse top to bottom
-            for i in range(top_row, bottom_row):
-                output.append(matrix[i][right_col - 1])
-            right_col -=1
+            if (start_row < end_row):
+                # traverse from right to left
+                for i in range(end_column - 1, start_column - 1, - 1):
+                    output.append(matrix[end_row - 1][i])
+                end_row -= 1
 
-
-            # traverse right to left
-
-            if (top_row < bottom_row):
-                for i in range(right_col - 1, left_col - 1, -1):
-                    output.append(matrix[bottom_row - 1][i])
-                bottom_row -=1
-
-            # traverse bottom to the top
-            if (left_col < right_col):
-                for i in range(bottom_row - 1, top_row - 1, - 1):
-                    output.append(matrix[i][left_col])
-                left_col += 1
+            if (start_column < end_column):
+                # traverse from bottom to top
+                for i in range(end_row - 1, start_row - 1, - 1):
+                    output.append(matrix[i][start_column])
+                start_column += 1
 
         return output
+        
