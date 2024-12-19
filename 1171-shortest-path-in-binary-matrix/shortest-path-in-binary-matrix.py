@@ -37,9 +37,7 @@ class Solution:
                     if (isValid(row, column)):
                         queue.append([row, column, path_length + 1])
                         visited.add((row, column))
-            
-            path_length += 1
-        
+                    
         return -1
                 
 
