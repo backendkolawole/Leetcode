@@ -11,19 +11,18 @@ var equalPairs = function(grid) {
     for (let row of grid) {
         rowValues = ''
         for (let i = 0; i < row.length; i++) {
-            rowValues += row[i] + ' - '
+            rowValues = rowValues + ',' + row[i] 
         }
         if (!lookup[rowValues]) lookup[rowValues] = 0
         lookup[rowValues] ++
     }
 
     function transpose(matrix) {
-        let rows = matrix.length
-        let columns = matrix[0].length
-        let array = Array.from({length: rows}, ()=> new Array(columns))
+        let n = matrix.length
+        let array = Array.from({length: n}, ()=> new Array(n))
         
-        for (let i = 0; i < rows; i++) {
-            for (let j = 0; j < columns; j++) {
+        for (let i = 0; i < n; i++) {
+            for (let j = 0; j < n; j++) {
                 array[j][i] = matrix[i][j]
             }
         }
@@ -36,7 +35,7 @@ var equalPairs = function(grid) {
     for (let row of array) {
         rowValues = ''
         for (let i = 0; i < row.length; i++) {
-            rowValues += row[i] + ' - '
+            rowValues = rowValues + ',' + row[i] 
         }
         count += lookup[rowValues] || 0
     }
